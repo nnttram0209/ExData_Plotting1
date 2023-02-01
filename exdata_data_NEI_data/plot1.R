@@ -1,0 +1,11 @@
+setwd("C:/Users/ASUS/Documents/ExData_Plotting1/exdata_data_NEI_data")
+SCC <- readRDS("Source_Classification_Code.rds")
+summarySCC <- readRDS("summarySCC_PM25.rds")
+pm99 <- sum(subset(summarySCC, year==1999, select = c(Emissions)))
+pm02 <- sum(subset(summarySCC, year==2002, select = c(Emissions)))
+pm05 <- sum(subset(summarySCC, year==2005, select = c(Emissions)))
+pm08 <- sum(subset(summarySCC, year==2008, select = c(Emissions)))
+
+barplot(c(pm99, pm02, pm05, pm08), names.arg=c("1999", "2002", "2005", "2008"), main = "Total PM2.5 emission")
+dev.copy(png, "plot1.png")
+dev.off()
